@@ -1,0 +1,265 @@
+ :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --primary-color: #6eff8f;
+            --secondary-color: #b68cff;
+            --card-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        header {
+            background-color: var(--bg-color);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-bg);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        header h1 {
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 4px 0;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-color);
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav.active {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 120px auto 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #home {
+            text-align: center;
+        }
+
+        #home img {
+            width: 120px;
+            margin-bottom: 20px;
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        #home h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        #home p {
+            font-size: 20px;
+            color: var(--secondary-color);
+        }
+
+        h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 10px;
+        }
+
+        .grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .grid::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .card {
+            flex: 0 0 280px;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            scroll-snap-align: start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(110, 255, 143, 0.2);
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .card p {
+            color: var(--text-color);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #54d973;
+        }
+
+        footer {
+            background-color: var(--bg-color);
+            text-align: center;
+            padding: 20px;
+            color: var(--secondary-color);
+            border-top: 1px solid var(--card-bg);
+        }
+
+        .social {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .social a {
+            color: var(--primary-color);
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+            }
+
+            nav.active {
+                display: flex;
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px var(--primary-color));
+            }
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 8px var(--primary-color)) drop-shadow(0 0 16px var(--secondary-color));
+            }
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px var(--primary-color));
+            }
+        }
